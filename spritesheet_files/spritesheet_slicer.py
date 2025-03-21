@@ -12,7 +12,7 @@ def parse(spritesheet, sprite_w, sprite_h, sprite_names, vertical=True):
         sprite_w is the width of each sprite in pixels;\n
         sprite_h is the height of each sprite in pixels;\n
         sprite_names is a list of strings used to create a dictionary, with the strings being the keys for each value;\n
-        vertical is will change the how the loop runs, either going up and down or left and right;
+        vertical will change the how the loop runs, either going up and down or left and right;
     '''
     #creates an empty dictionary that will be filled and then returned
     sprites={}

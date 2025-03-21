@@ -6,6 +6,10 @@ class Card():
         self._val=int(suit_val[:len(suit_val)-1])
         self._sprites=sprites
         self._shown=shown
+        self._pos=(0, 0)
+    
+    def set_pos(self, x, y):
+        self._pos=(x, y)
 
     def set_color(self):
         if self._suit == 'C' or self._suit == 'S':
