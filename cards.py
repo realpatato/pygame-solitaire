@@ -23,3 +23,11 @@ class Card():
             self._black=True
         else:
             self._black=False
+
+class Ace_Spot():
+    def __init__(self, sprite):
+        self._sprite=sprite
+        self._pos=(0,0)
+
+    def set_pos(self, x, y):
+        self._pos=(x, y)

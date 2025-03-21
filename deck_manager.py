@@ -74,3 +74,13 @@ def build_deck():
         deck.append(cards.Card(sprite_str, [back_sprite_dict["CARD_BACK"], front_sprite_dict[sprite_str]]))
     deck=Deck(deck)
     return deck
+
+def ace_spots_build():
+    back_sprite_names=[["", "", "", "", ""],
+                        ["", "", "", "", ""],
+                        ["CARD_BACK", "", "", "", "ACE_SPOT"]]
+    back_sprite_dict=sprite_dict_build("playingCardBacks", back_sprite_names)
+    ace_spots=[]
+    for i in range(11):
+        ace_spots.append(cards.Ace_Spot(back_sprite_dict["ACE_SPOT"]))
+    return ace_spots
