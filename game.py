@@ -1,5 +1,4 @@
 import pygame
-import spritesheet_files.spritesheet_slicer as slicer
 import deck_manager as dm
 import mouse_handler as mh
 
@@ -21,6 +20,7 @@ for k in range(7):
             king_spots[i].set_pos((81*i)+18, (18*k)+131)
         if i == k:
             deck._cards[deck._card_pos].set_shown(True)
+        deck._cards[deck._card_pos].set_parent(king_spots[i])
         king_spots[i]._cards.append(deck._cards[deck._card_pos])
         deck.advance_pos()
 
@@ -47,21 +47,14 @@ while playing:
         if event.type == pygame.MOUSEBUTTONUP:
             print()
             for king_spot in king_spots:
-                print("Before: ")
-                print(king_spot._cards)
                 on_king_spot=mh.check_pos_king_spot(king_spot._cards, mouse_pos)
                 if on_king_spot:
-                    for i in range(len(king_spot._cards)):
-                        if king_spot._cards[i] == cur_selection:
-                            cur_selection_index=i
-                            king_spot_in_mem=king_spot
-                            print(king_spot_in_mem)
+                    print(cur_selection.get_parent())
+                    old_king_spot=cur_selection.get_parent()
                     king_spot._cards.append(cur_selection)
-                    king_spot_in_mem._cards.pop(cur_selection_index)
+                    old_king_spot._cards.remove(cur_selection)
                     for spot in king_spots:
                         spot.pile()
-                print("After: ")
-                print(king_spot._cards)
             cur_selection=None
             mouse_down=False
 

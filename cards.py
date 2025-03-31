@@ -1,9 +1,10 @@
 import pygame
 
 class Card():
-    def __init__(self, suit_val, sprites, shown=False):
+    def __init__(self, suit_val, sprites, parent="placeholder", shown=False):
         self._suit=suit_val[len(suit_val)-1]
         self._val=int(suit_val[:len(suit_val)-1])
+        self._parent=parent
         self._shown=shown
         self._sprites=sprites
         self._sprite=self._sprites[bool(self._shown)]
@@ -14,6 +15,12 @@ class Card():
 
     def set_shown(self, new_val):
         self._shown=new_val
+    
+    def set_parent(self, parent):
+        self._parent=parent
+
+    def get_parent(self):
+        return self._parent
     
     def update_sprite(self):
         self._sprite=self._sprites[bool(self._shown)]
