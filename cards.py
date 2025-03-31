@@ -23,11 +23,23 @@ class Card():
             self._black=True
         else:
             self._black=False
+    
+    def __str__(self):
+        return "card is at "+str(self._pos)+" and has a suit val of "+self._suit+str(self._val)
 
-class Ace_Spot():
+class Spot():
     def __init__(self, sprite):
         self._sprite=sprite
         self._pos=(0,0)
+        self._cards=[]
 
     def set_pos(self, x, y):
         self._pos=(x, y)
+
+class Ace_Spot(Spot):
+    pass
+
+class King_Spot(Spot):
+    def pile(self):
+        for i in range(len(self._cards)):
+            self._cards[i].set_pos(self._pos[0], self._pos[1]+(18*i))

@@ -75,12 +75,16 @@ def build_deck():
     deck=Deck(deck)
     return deck
 
-def ace_spots_build():
+def spots_build(count, type="ace"):
     back_sprite_names=[["", "", "", "", ""],
                         ["", "", "", "", ""],
                         ["CARD_BACK", "", "", "", "ACE_SPOT"]]
     back_sprite_dict=sprite_dict_build("playingCardBacks", back_sprite_names)
-    ace_spots=[]
-    for i in range(11):
-        ace_spots.append(cards.Ace_Spot(back_sprite_dict["ACE_SPOT"]))
-    return ace_spots
+    spots=[]
+    if type == "ace":
+        for i in range(count):
+            spots.append(cards.Ace_Spot(back_sprite_dict["ACE_SPOT"]))
+    else:
+        for i in range(count):
+            spots.append(cards.King_Spot(back_sprite_dict["ACE_SPOT"]))
+    return spots
