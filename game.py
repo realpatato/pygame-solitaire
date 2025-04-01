@@ -46,15 +46,19 @@ while playing:
         
         if event.type == pygame.MOUSEBUTTONUP:
             print()
-            for king_spot in king_spots:
-                on_king_spot=mh.check_pos_king_spot(king_spot._cards, mouse_pos)
-                if on_king_spot:
-                    print(cur_selection.get_parent())
-                    old_king_spot=cur_selection.get_parent()
-                    king_spot._cards.append(cur_selection)
-                    old_king_spot._cards.remove(cur_selection)
-                    for spot in king_spots:
-                        spot.pile()
+            if cur_selection != None:
+                for king_spot in king_spots:
+                    on_king_spot=mh.check_pos_king_spot(king_spot._cards, mouse_pos)
+                    if on_king_spot:
+                        print("Hello")
+                        old_king_spot=cur_selection.get_parent()
+                        print(old_king_spot._cards)
+                        print(king_spot._cards)
+                        king_spot._cards.append(cur_selection)
+                        old_king_spot._cards.remove(cur_selection)
+                        for spot in king_spots:
+                            spot.pile()
+                        break
             cur_selection=None
             mouse_down=False
 

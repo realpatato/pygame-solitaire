@@ -17,4 +17,6 @@ def check_pos_king_spot(cards, mouse_pos):
         else:
             return False
     except IndexError:
-        print("Out of Range")
+        pass
+        if cards == []:
+            print("King spot empty")
